@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  urlServer: ''
+  urlServer: 'https://sell-ticket.herokuapp.com/'
 };
