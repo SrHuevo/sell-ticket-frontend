@@ -1,0 +1,17 @@
+<form [formGroup]="form">
+
+  <div class="form-group" [ngClass]="{'has-error':!form.controls['email'].valid && form.controls['email'].touched}">
+    <label class="control-label">Email:</label>
+    <input class="form-control" type="email" placeholder="Email:" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" [formControl]="form.controls['email']">
+    <div *ngIf="!form.controls['email'].valid && form.controls['email'].touched" class="help-block with-errors">¡Tienes que poner el correo y ponerlo bien!</div>
+  </div>
+
+  <div class="form-group" [ngClass]="{'has-error':!form.controls['name'].valid && form.controls['name'].touched}">
+    <label class="control-label">Nombre y apellidos:</label>
+    <input class="form-control" type="text" placeholder="Nombre:" [formControl]="form.controls['name']">
+    <div *ngIf="!form.controls['name'].valid && form.controls['name'].touched" class="help-block with-errors">¡Tienes que poner el nombre!</div>
+  </div>
+  <button type="button" (click)="update(form)" class="btn btn-success" [disabled]="!form.valid">Actualizar</button>
+  <button type="button" (click)="newPassRequest(form)" class="btn btn-primary" [disabled]="!form.valid">Enviar nueva contraseña</button>
+  <button type="button" class="btn btn-default" [routerLink]="['/user/list']">Cancelar</button>
+</form>

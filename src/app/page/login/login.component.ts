@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthService} from '../../service/auth.service'
 import {Router} from '@angular/router'
+import {FormBuilder, FormGroup, Validators} from '@angular/forms'
 
 @Component({
   selector: 'app-login',
@@ -9,13 +10,22 @@ import {Router} from '@angular/router'
 })
 export class LoginComponent implements OnInit {
 
-  email: String
-  pass: String
+  form : FormGroup
+  errors = {
+    unauthorized: false,
+    unknown: false,
+  }
 
   constructor(
     private router: Router,
+    fb: FormBuilder,
     private authService: AuthService
-  ) { }
+  ) {
+    this.form = fb.group({
+      email : [null, Validators.required],
+      pass: [null, Validators.required],
+    })
+  }
 
   ngOnInit() {
     if(this.authService.isLoggedIn) {
@@ -23,14 +33,19 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  login() {
-    this.authService.login(this.email, this.pass)
+  submitForm(){
+    this.errors.unknown = false
+    this.errors.unauthorized = false
+    this.authService.login(this.form.value.email, this.form.value.pass)
     .subscribe(
       data => {
         this.router.navigate([this.authService.redirectUrl]);
       },
       error => {
-        console.log(error)
+        if(error.status === 401)
+          this.errors.unauthorized = true;
+        else
+          this.errors.unknown = true
       });
   }
 

@@ -11,13 +11,29 @@ import { SellComponent } from './page/ticket/sell/sell.component'
 import {AuthGuard} from './guard/auth.guard'
 import {AuthService} from './service/auth.service'
 import {HttpModule} from '@angular/http'
-import {FormsModule} from '@angular/forms'
+import {FormsModule, ReactiveFormsModule} from '@angular/forms'
+import {TicketService} from './service/ticket.service';
+import { TicketListComponent } from './page/ticket/ticket-list/ticket-list.component';
+import { RegisterComponent } from './page/user/register/register.component';
+import { TicketUpdateComponent } from './page/ticket/ticket-update/ticket-update.component';
+import { UsersListComponent } from './page/user/users-list/users-list.component';
+import { UserUpdateComponent } from './page/user/user-update/user-update.component';
+import { UserPassUpdateComponent } from './page/user/user-pass-update/user-pass-update.component';
 
 const appRoutes:Routes = [
   {path: 'login', component: LoginComponent},
-  {path: 'ticket', children: [
+  {path: 'user', children: [
+    {path: '', pathMatch: 'full', redirectTo: 'register'},
+    {path: 'register', component: RegisterComponent, canActivate: [AuthGuard]},
+    {path: 'list', component: UsersListComponent, canActivate: [AuthGuard]},
+    {path: ':userId', component: UserUpdateComponent, canActivate: [AuthGuard]},
+    {path: ':userId/pass', component: UserPassUpdateComponent, canActivate: [AuthGuard]},
+  ]},
+  {path: 'ticket', canActivate: [AuthGuard], children: [
     {path: '', pathMatch: 'full', redirectTo: 'sell'},
-    {path: 'sell', component: SellComponent, canActivate: [AuthGuard]},
+    {path: 'sell', component: SellComponent},
+    {path: 'list', component: TicketListComponent},
+    {path: 'update', component: TicketUpdateComponent},
   ]},
   {path: '**', redirectTo: '/ticket/sell'}
 ]
@@ -29,6 +45,12 @@ const appRoutes:Routes = [
     NavbarComponent,
     LoginComponent,
     SellComponent,
+    TicketListComponent,
+    RegisterComponent,
+    TicketUpdateComponent,
+    UsersListComponent,
+    UserUpdateComponent,
+    UserPassUpdateComponent,
   ],
   imports: [
     BrowserModule,
@@ -37,11 +59,13 @@ const appRoutes:Routes = [
     RouterModule.forRoot(appRoutes),
     HttpModule,
     FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [
     UserService,
     AuthGuard,
     AuthService,
+    TicketService
   ],
   bootstrap: [AppComponent]
 })

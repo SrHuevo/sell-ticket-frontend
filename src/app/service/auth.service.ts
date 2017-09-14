@@ -3,20 +3,23 @@ import {Headers, Http, RequestOptions, Response} from '@angular/http'
 import {Observable} from 'rxjs/Observable'
 import 'rxjs/add/operator/do'
 import 'rxjs/add/observable/of'
+import {environment} from '../../environments/environment'
 
 @Injectable()
 export class AuthService {
 
   private _redirectUrl: string
 
+  logged = false
+
   constructor(
     private http: Http
   ){}
 
   login(email: String, pass: String): Observable<Response> {
-    let headers = new Headers({ 'Content-Type': 'application/json' });
-    let options = new RequestOptions({ headers: headers });
-    return this.http.post('http://localhost:3000/user/login', JSON.stringify({email, pass}), options)
+    const headers = new Headers({ 'Content-Type': 'application/json' });
+    const options = new RequestOptions({ headers: headers });
+    return this.http.post(`${environment.urlServer}/user/login`, JSON.stringify({email, pass}), options)
       .do((response: Response) => {
         localStorage.setItem('jwt',response.json().jwt)
     })
@@ -24,6 +27,7 @@ export class AuthService {
 
   logout(): Observable<void> {
     return Observable.of(null).do(() => {
+      this.logged = false
       localStorage.removeItem('jwt')
     })
   }
@@ -37,7 +41,12 @@ export class AuthService {
   }
 
   get isLoggedIn(): boolean {
-    return localStorage.getItem('jwt') !== null
+    this.logged = localStorage.getItem('jwt') !== null
+    return this.logged
+  }
+
+  get jwt(): string {
+    return localStorage.getItem('jwt')
   }
 
 }

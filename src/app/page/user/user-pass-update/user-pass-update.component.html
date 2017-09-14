@@ -1,0 +1,18 @@
+<h1>Cambie su contraseña</h1>
+
+<form [formGroup]="form" (ngSubmit)="submitForm(form.value)">
+
+  <div class="form-group" [ngClass]="{'has-error':!form.controls['pass'].valid && form.controls['pass'].touched}">
+    <label>Contraseña:</label>
+    <input class="form-control" type="password" placeholder="Introduce el nombre y apellidos" [formControl]="form.controls['pass']">
+    <div *ngIf="!form.controls['pass'].valid && form.controls['pass'].touched" class="help-block with-errors">¡Tienes que poner una contraseña, de al menos 8 digitos y que sea algo segura porfavo!</div>
+  </div>
+
+  <div class="form-group" [ngClass]="{'has-error':form.hasError('notSame') && form.controls['passConfirm'].touched}">
+    <label>Confirme la contraseña:</label>
+    <input class="form-control" type="password" placeholder="Introduce el nombre y apellidos" [formControl]="form.controls['passConfirm']">
+    <div *ngIf="form.hasError('notSame') && form.controls['passConfirm'].touched" class="help-block with-errors">¡Las contraseñas no coinciden!</div>
+  </div>
+
+  <button type="submit" class="btn btn-primary" [disabled]="!form.valid">Submit</button>
+</form>

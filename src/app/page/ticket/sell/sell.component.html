@@ -1,12 +1,47 @@
 <h1>Vender entrada</h1>
-<input class="form-control" placeholder="Introduce el email">
-<input class="form-control" placeholder="Introduce el DNI">
-<input class="form-control" placeholder="Introduce el nombre y apellidos">
-<div class="form-group">
-  <label>¿Quiere ser zombie?</label>
-  <select class="form-control">
-    <option>Seleccione si quiere serlo</option>
-    <option>Sí</option>
-    <option>No</option>
-  </select>
-</div>
+
+<form [formGroup]="form" (ngSubmit)="submitForm(form.value)">
+
+  <div class="form-group" [ngClass]="{'has-error':!form.controls['email'].valid && form.controls['email'].touched}">
+    <label class="control-label">Email:</label>
+    <input class="form-control" type="email" placeholder="Introduce el email" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" [formControl]="form.controls['email']">
+    <div *ngIf="!form.controls['email'].valid && form.controls['email'].touched" class="help-block with-errors">¡Tienes que poner el correo y ponerlo bien!</div>
+  </div>
+
+  <div class="form-group" [ngClass]="{'has-error':!form.controls['dni'].valid && form.controls['dni'].touched}">
+    <label>DNI:</label>
+    <input class="form-control" type="text" placeholder="Introduce el dni" [formControl]="form.controls['dni']">
+    <div *ngIf="!form.controls['dni'].valid && form.controls['dni'].touched" class="help-block with-errors">¡Tienes que poner el DNI!</div>
+  </div>
+
+  <div class="form-group" [ngClass]="{'has-error':!form.controls['name'].valid && form.controls['name'].touched}">
+    <label>Nombre y apellidos:</label>
+    <input class="form-control" type="text" placeholder="Introduce el nombre y apellidos" [formControl]="form.controls['name']">
+    <div *ngIf="!form.controls['name'].valid && form.controls['name'].touched" class="help-block with-errors">¡Tienes que poner el nombre y los apellidos!</div>
+  </div>
+
+  <div class="form-group">
+    <label>¿Quiere ser zombie?:</label>
+    <div class="alert alert-danger" *ngIf="!form.controls['immortal'].valid">¡Preguntale si quiere ser zombie, será inmortal!</div>
+  </div>
+  <div class="radio">
+    <label>
+      <input type="radio" name="immortal" value="true" [formControl]="form.controls['immortal']">
+      Sí
+    </label>
+  </div>
+  <div class="radio">
+    <label>
+      <input type="radio" name="immortal" value="false" [formControl]="form.controls['immortal']">
+      No
+    </label>
+  </div>
+
+  <!--<div class="form-group">-->
+    <!--<label>Cuantas entradas quiere comprar:</label>-->
+    <!--<input type="number" class="form-control" [(ngModel)]="nTickets" [ngModelOptions]="{standalone: true}">-->
+    <!--<div *ngIf="nTickets > 1" class="alert alert-danger" role="alert">Avisale de que luego deberá cambiar sus datos.</div>-->
+  <!--</div>-->
+
+  <button type="submit" class="btn btn-primary" [disabled]="!form.valid">Submit</button>
+</form>

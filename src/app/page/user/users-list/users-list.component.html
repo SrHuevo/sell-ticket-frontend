@@ -1,0 +1,24 @@
+<h1>Lista de usuarios</h1>
+<div class="alert alert-info" role="alert">Haga click en una fila para editarla</div>
+<table class="table table-hover">
+  <thead>
+  <tr>
+    <th>Nombre</th>
+    <th>Email</th>
+    <th>Creador</th>
+    <th>Fecha de cración</th>
+    <th>Modificador</th>
+    <th>Fecha de modificacion</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let user of users" (click)="updateUser(user)" [title]="'actualizar a ' + user.name">
+    <td>{{user.name}}</td>
+    <td>{{user.email}}</td>
+    <td>{{user.userCreated}}</td>
+    <td>{{user.dateCreated | date:'dd/MM/yyyy HH:mm'}}</td>
+    <td>{{user.userModified}}</td>
+    <td>{{user.dateModified | date:'dd/MM/yyyy HH:mm'}}</td>
+  </tr>
+  </tbody>
+</table>
