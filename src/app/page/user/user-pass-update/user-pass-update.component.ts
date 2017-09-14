@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms'
 import {UserService} from '../../../service/user.service'
+import {AuthService} from '../../../service/auth.service'
+import {Router} from '@angular/router'
 
 @Component({
   selector: 'app-user-pass-update',
@@ -13,7 +15,9 @@ export class UserPassUpdateComponent implements OnInit {
 
   constructor(
     fb: FormBuilder,
-    private userService: UserService
+    private userService: UserService,
+    private authService: AuthService,
+    private router: Router,
   ) {
     this.form = fb.group({
       pass : [null,  Validators.compose([Validators.required, Validators.minLength(8)])],
@@ -29,8 +33,10 @@ export class UserPassUpdateComponent implements OnInit {
   submitForm(values){
     this.userService.changePass(values).subscribe(
       data => {
-        this.form.reset()
         alert('Contraseña cambiada con exito disfruta!')
+        this.authService.logout().subscribe(()=>{
+          this.router.navigate([this.authService.redirectUrl]);
+        })
       },
       error => {
         alert('No se ha podido cambiar la contraseña, algo catastrofico ha debido ocurrir, intentalo de nuevo y si no llama a Dani 611463460')
