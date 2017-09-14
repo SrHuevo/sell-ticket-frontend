@@ -27,7 +27,7 @@ const appRoutes:Routes = [
     {path: 'register', component: RegisterComponent, canActivate: [AuthGuard]},
     {path: 'list', component: UsersListComponent, canActivate: [AuthGuard]},
     {path: ':userId', component: UserUpdateComponent, canActivate: [AuthGuard]},
-    {path: ':userId/pass', component: UserPassUpdateComponent, canActivate: [AuthGuard]},
+    {path: ':userId/pass', component: UserPassUpdateComponent},
   ]},
   {path: 'ticket', canActivate: [AuthGuard], children: [
     {path: '', pathMatch: 'full', redirectTo: 'sell'},
