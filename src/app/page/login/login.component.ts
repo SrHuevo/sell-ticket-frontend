@@ -33,10 +33,10 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  submitForm(){
+  submitForm(values){
     this.errors.unknown = false
     this.errors.unauthorized = false
-    this.authService.login(this.form.value.email, this.form.value.pass)
+    this.authService.login(values.email, values.pass)
     .subscribe(
       data => {
         this.router.navigate([this.authService.redirectUrl]);

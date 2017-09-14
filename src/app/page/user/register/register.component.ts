@@ -24,10 +24,9 @@ export class RegisterComponent implements OnInit {
   ngOnInit() {
   }
 
-  submitForm(){
-    const user = this.form.value
-    user.profiles = ["USER_CREATOR", "USER_EDITOR", "CHECKING"]
-    this.userService.register(this.form.value).subscribe(
+  submitForm(values){
+    values.profiles = ["USER_CREATOR", "USER_EDITOR", "CHECKING"]
+    this.userService.register(values).subscribe(
       data => {
         this.form.reset()
         alert('Usuario creado, le llegara un correo en breves con la informacion para cambiar la contraseña')

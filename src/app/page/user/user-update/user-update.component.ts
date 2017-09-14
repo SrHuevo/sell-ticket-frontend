@@ -33,8 +33,8 @@ export class UserUpdateComponent implements OnInit {
     })
   }
 
-  update(){
-    this.userService.update(this.userId, this.form.value).subscribe(
+  update(form){
+    this.userService.update(this.userId, form.value).subscribe(
       data => {
         alert('Usuario actualizado')
       },

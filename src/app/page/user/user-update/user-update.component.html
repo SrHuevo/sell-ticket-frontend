@@ -12,6 +12,6 @@
     <div *ngIf="!form.controls['name'].valid && form.controls['name'].touched" class="help-block with-errors">¡Tienes que poner el nombre!</div>
   </div>
   <button type="button" (click)="update(form)" class="btn btn-success" [disabled]="!form.valid">Actualizar</button>
-  <button type="button" (click)="newPassRequest(form)" class="btn btn-primary" [disabled]="!form.valid">Enviar nueva contraseña</button>
+  <button type="button" (click)="newPassRequest()" class="btn btn-primary" [disabled]="!form.valid">Enviar nueva contraseña</button>
   <button type="button" class="btn btn-default" [routerLink]="['/user/list']">Cancelar</button>
 </form>

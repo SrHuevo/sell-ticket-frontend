@@ -26,8 +26,8 @@ export class UserPassUpdateComponent implements OnInit {
   ngOnInit() {
   }
 
-  submitForm(){
-    this.userService.changePass(this.form.value).subscribe(
+  submitForm(values){
+    this.userService.changePass(values).subscribe(
       data => {
         this.form.reset()
         alert('Contraseña cambiada con exito disfruta!')

@@ -30,9 +30,9 @@ export class SellComponent implements OnInit {
   ngOnInit() {
   }
 
-  submitForm(){
+  submitForm(values){
     Observable.range(0, this.nTickets)
-    .map(n => this.generateTicket(n))
+    .map(n => this.generateTicket(n, values))
     .map(ticket => this.ticketService.sell(ticket).subscribe(
       data => {
         this.form.reset()
@@ -44,12 +44,12 @@ export class SellComponent implements OnInit {
     .subscribe()
   }
 
-  private generateTicket(n: number) {
+  private generateTicket(n: number, values) {
     return new Ticket(
-      this.form.value.email,
-      this.form.value.dni,
-      `${this.form.value.name}${n === 0 ? '' : n}`,
-      this.form.value.immortal,
+      values.email,
+      values.dni,
+      `${values.name}${n === 0 ? '' : n}`,
+      values.immortal,
     )
   }
 
