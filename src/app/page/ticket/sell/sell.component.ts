@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms'
 import {Observable} from 'rxjs/Observable'
 import 'rxjs/add/observable/range'
+import 'rxjs/add/operator/map'
 import {TicketService} from '../../../service/ticket.service'
 import {Ticket} from '../../../pojo/ticket'
 
@@ -33,14 +34,16 @@ export class SellComponent implements OnInit {
   submitForm(values){
     Observable.range(0, this.nTickets)
     .map(n => this.generateTicket(n, values))
-    .map(ticket => this.ticketService.sell(ticket).subscribe(
-      data => {
-        this.form.reset()
-        alert('Entrada vendida, le debe de llegar un correo en breve')
-      },
-      error => {
-        alert('No se ha podido vender la entrada, algo catastrofico ha debido ocurrir, intentalo de nuevo y si no llama a Dani 611463460')
-      }))
+    .map(ticket => {
+      this.ticketService.sell(ticket).subscribe(
+        data => {
+          this.form.reset()
+          alert('Entrada vendida, le debe de llegar un correo en breve')
+        },
+        error => {
+          alert('No se ha podido vender la entrada, algo catastrofico ha debido ocurrir, intentalo de nuevo y si no llama a Dani 611463460')
+        })
+    })
     .subscribe()
   }
 
