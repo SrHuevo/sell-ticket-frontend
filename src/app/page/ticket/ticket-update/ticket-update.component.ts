@@ -40,7 +40,7 @@ export class TicketUpdateComponent implements OnInit {
   update(form){
     this.ticketService.update(this.ticketId, form.value).subscribe(
       data => {
-        alert('Entrada actualizada')
+        alert('Entrada actualizada, pronto le llegara el correo con los nuevos datos.')
       },
       error => {
         alert('No se ha podido actualizar la entrada, algo catastrofico ha debido ocurrir, intentalo de nuevo y si no llama a Dani 611463460')
