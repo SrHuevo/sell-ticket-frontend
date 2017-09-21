@@ -33,7 +33,7 @@ const appRoutes:Routes = [
     {path: '', pathMatch: 'full', redirectTo: 'sell'},
     {path: 'sell', component: SellComponent},
     {path: 'list', component: TicketListComponent},
-    {path: 'update', component: TicketUpdateComponent},
+    {path: ':ticketId', component: TicketUpdateComponent},
   ]},
   {path: '**', redirectTo: '/ticket/sell'}
 ]

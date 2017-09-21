@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {TicketService} from '../../../service/ticket.service'
+import {Router} from '@angular/router'
 
 @Component({
   selector: 'app-ticket-list',
@@ -7,9 +9,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TicketListComponent implements OnInit {
 
-  constructor() { }
+  tickets
+
+  constructor(
+    public ticketService: TicketService,
+    private router: Router,
+  ) { }
 
   ngOnInit() {
+    this.ticketService.getList().subscribe(response => {
+      this.tickets = response.json()
+    })
+  }
+
+  updateTicket(ticket) {
+    this.router.navigate(['/ticket/', ticket._id]);
   }
 
 }

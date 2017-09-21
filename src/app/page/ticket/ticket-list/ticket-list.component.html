@@ -1,3 +1,26 @@
-<p>
-  ticket-list works!
-</p>
+<h1>Lista de entradas</h1>
+<div class="alert alert-info" role="alert">Haga click en una fila para editarla</div>
+<table class="table table-hover">
+  <thead>
+  <tr>
+    <th>Dorsal</th>
+    <th>Nombre</th>
+    <th>Email</th>
+    <th>Vendedor</th>
+    <th>Fecha de venta</th>
+    <th>Modificador</th>
+    <th>Fecha de modificacion</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let ticket of tickets" (click)="updateTicket(ticket)" [title]="'Actualizar el dorsal ' + ticket._id"  [ngClass]="{'danger': ticket.immortal}">
+    <td>{{ticket._id}}</td>
+    <td>{{ticket.name}}</td>
+    <td>{{ticket.email}}</td>
+    <td>{{ticket.seller}}</td>
+    <td>{{ticket.dateOfPursache | date:'dd/MM/yyyy HH:mm'}}</td>
+    <td>{{ticket.updater}}</td>
+    <td>{{ticket.dateUpdated | date:'dd/MM/yyyy HH:mm'}}</td>
+  </tr>
+  </tbody>
+</table>

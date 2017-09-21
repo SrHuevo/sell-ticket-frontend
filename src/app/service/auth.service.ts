@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {Headers, Http, RequestOptions, Response} from '@angular/http'
 import {Observable} from 'rxjs/Observable'
 import 'rxjs/add/operator/do'
+import 'rxjs/add/operator/timeout'
 import 'rxjs/add/observable/of'
 import {environment} from '../../environments/environment'
 
