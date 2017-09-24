@@ -25,7 +25,14 @@ export class RegisterComponent implements OnInit {
   }
 
   submitForm(values){
-    values.profiles = ["USER_CREATOR", "USER_EDITOR", "CHECKING"]
+    values.profiles = [
+      'USER_CREATOR',
+      'USER_VIWER',
+      'USER_EDITOR',
+      'TICKET_VIEWER',
+      'TICKET_EDITOR',
+      'CHECKING'
+    ]
     this.userService.register(values).subscribe(
       data => {
         this.form.reset()
