@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import {UserService} from './service/user.service'
+import {AuthService} from './service/auth.service'
+import {Router} from '@angular/router'
 
 @Component({
   selector: 'app-root',
@@ -8,8 +10,15 @@ import {UserService} from './service/user.service'
 })
 export class AppComponent {
   constructor(
-    private userService: UserService
+    private userService: UserService,
+    private authService: AuthService,
+    private router: Router
   ) {
-    userService.getMe().subscribe()
+    userService.getMe().subscribe(
+      ()=>{},
+      err => authService.logout().subscribe(() => {
+      this.router.navigate(['/login'])
+    })
+    )
   }
 }
