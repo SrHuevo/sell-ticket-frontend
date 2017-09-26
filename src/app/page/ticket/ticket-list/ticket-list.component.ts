@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {TicketService} from '../../../service/ticket.service'
 import {Router} from '@angular/router'
+import {UserService} from '../../../service/user.service'
 
 @Component({
   selector: 'app-ticket-list',
@@ -13,12 +14,14 @@ export class TicketListComponent implements OnInit {
 
   constructor(
     public ticketService: TicketService,
+    public userService: UserService,
     private router: Router,
   ) { }
 
   ngOnInit() {
+    const canReserve = this.userService.me.profiles.indexOf('CAN_RESERVE') != -1
     this.ticketService.getList().subscribe(response => {
-      this.tickets = response.json()
+      this.tickets = response.json().filter(ticket => canReserve || !ticket.reserved)
     })
   }
 

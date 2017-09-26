@@ -3,6 +3,7 @@ export class Ticket {
     public email: string,
     public dni: string,
     public name: string,
-    public immortal: boolean
+    public immortal: boolean,
+    public reserved: boolean
   ) {}
 }

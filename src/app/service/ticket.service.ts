@@ -21,6 +21,15 @@ export class TicketService {
     return this.http.post(`${environment.urlServer}/ticket`, JSON.stringify(ticket), options)
   }
 
+  reserve(ticket: Ticket) {
+    const headers = new Headers({
+      'Content-Type': 'application/json',
+      authorization: `Bearer ${this.authService.jwt}`
+    });
+    const options = new RequestOptions({ headers: headers });
+    return this.http.post(`${environment.urlServer}/ticket`, JSON.stringify(ticket), options)
+  }
+
   getList() {
     const headers = new Headers({
       authorization: `Bearer ${this.authService.jwt}`

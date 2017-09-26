@@ -37,11 +37,27 @@
     </label>
   </div>
 
+  <div *ngIf="canReserve" class="form-group">
+    <label>¿Es una reserva?</label>
+  </div>
+  <div *ngIf="canReserve" class="radio">
+    <label>
+      <input type="radio" name="reserved" value="true" [checked]="form.controls['reserved'].value === true" [formControl]="form.controls['reserved']">
+      Sí
+    </label>
+  </div>
+  <div *ngIf="canReserve" class="radio">
+    <label>
+      <input type="radio" name="reserved" value="false" [checked]="form.controls['reserved'].value === false" [formControl]="form.controls['reserved']">
+      No
+    </label>
+  </div>
+
   <!--<div class="form-group">-->
     <!--<label>Cuantas entradas quiere comprar:</label>-->
     <!--<input type="number" class="form-control" [(ngModel)]="nTickets" [ngModelOptions]="{standalone: true}">-->
     <!--<div *ngIf="nTickets > 1" class="alert alert-danger" role="alert">Avisale de que luego deberá cambiar sus datos.</div>-->
   <!--</div>-->
 
-  <button type="submit" class="btn btn-primary" [disabled]="!form.valid">Submit</button>
+  <button type="submit" class="btn btn-primary" [disabled]="!form.valid">Vender</button>
 </form>

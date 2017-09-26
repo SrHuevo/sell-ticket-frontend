@@ -14,7 +14,7 @@
   </tr>
   </thead>
   <tbody>
-  <tr *ngFor="let ticket of tickets" (click)="updateTicket(ticket)" [title]="'Actualizar el dorsal ' + ticket._id"  [ngClass]="{'danger': ticket.immortal}">
+  <tr *ngFor="let ticket of tickets" (click)="updateTicket(ticket)" [title]="'Actualizar el dorsal ' + ticket._id"  [ngClass]="{'danger': ticket.immortal && !ticket.reserved, 'info': !ticket.immortal && ticket.reserved, 'warning':ticket.immortal && ticket.reserved}">
     <td>{{ticket._id}}</td>
     <td>{{ticket.name}}</td>
     <td>{{ticket.email}}</td>
