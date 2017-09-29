@@ -9,7 +9,7 @@
   <div class="form-group" [ngClass]="{'has-error':!form.controls['pass'].valid && form.controls['pass'].touched}">
     <label>Contraseña:</label>
     <input class="form-control" type="password" placeholder="Introduce la contraseña" [formControl]="form.controls['pass']">
-    <div *ngIf="!form.controls['pass'].valid && form.controls['pass'].touched" class="help-block with-errors">¡Tienes que poner el DNI!</div>
+    <div *ngIf="!form.controls['pass'].valid && form.controls['pass'].touched" class="help-block with-errors">¡Tienes que poner la contraseña!</div>
   </div>
 
   <button type="submit" class="btn btn-primary" [disabled]="!form.valid">Submit</button>

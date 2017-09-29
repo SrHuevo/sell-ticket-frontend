@@ -4,6 +4,7 @@ export class Ticket {
     public dni: string,
     public name: string,
     public immortal: boolean,
-    public reserved: boolean
+    public reserved: boolean,
+    public used: boolean
   ) {}
 }

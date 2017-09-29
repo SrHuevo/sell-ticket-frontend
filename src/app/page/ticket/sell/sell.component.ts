@@ -41,6 +41,7 @@ export class SellComponent implements OnInit {
     Observable.range(0, this.nTickets)
     .map(n => this.generateTicket(n, values))
     .map(ticket => {
+      console.log(ticket)
       this.ticketService.sell(ticket).subscribe(
         data => {
           alert('Entrada vendida, le debe de llegar un correo en breve')
@@ -61,6 +62,7 @@ export class SellComponent implements OnInit {
       `${values.name}${n === 0 ? '' : n}`,
       values.immortal,
       values.reserved,
+      false
     )
   }
 
