@@ -1,1 +1,15 @@
 @import url("lib/bootstrap/3.3.7/css/bootstrap.min.css");
+
+table>tbody>tr>td[rowspan] {
+  vertical-align: inherit;
+}
+
+.input-group {
+  display: inline-table;
+  vertical-align: middle;
+}
+.input-group .input-group-addon,
+.input-group .input-group-btn,
+.input-group .form-control {
+  width: auto !important;
+}

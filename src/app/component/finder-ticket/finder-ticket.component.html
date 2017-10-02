@@ -1,0 +1,4 @@
+<div class="form-group">
+  <input type="text" class="form-control">
+  <app-player-preview *ngFor="let player of players" [player]="player" (click)="select(player)"></app-player-preview>
+</div>

@@ -19,6 +19,13 @@ import { TicketUpdateComponent } from './page/ticket/ticket-update/ticket-update
 import { UsersListComponent } from './page/user/users-list/users-list.component';
 import { UserUpdateComponent } from './page/user/user-update/user-update.component';
 import { UserPassUpdateComponent } from './page/user/user-pass-update/user-pass-update.component';
+import { RankComponent } from './component/rank/rank.component';
+import { FinderTicketComponent } from './component/finder-ticket/finder-ticket.component';
+import { AddPointsTicketComponent } from './component/add-points-ticket/add-points-ticket.component';
+import { RanksComponent } from './page/ticket/ranks/ranks.component';
+import { PlayerPreviewComponent } from './component/player-preview/player-preview.component';
+import { DeadComponent } from './page/ticket/dead/dead.component';
+import { RateComponent } from './page/ticket/rate/rate.component';
 
 const appRoutes:Routes = [
   {path: 'login', component: LoginComponent},
@@ -33,9 +40,12 @@ const appRoutes:Routes = [
     {path: '', pathMatch: 'full', redirectTo: 'sell'},
     {path: 'sell', component: SellComponent},
     {path: 'list', component: TicketListComponent},
+    {path: 'rate', component: RateComponent},
+    {path: 'dead', component: DeadComponent},
+    {path: 'ranks', component: RanksComponent},
     {path: ':ticketId', component: TicketUpdateComponent},
   ]},
-  {path: '**', redirectTo: '/ticket/sell'}
+  {path: '**', redirectTo: '/ticket/sell'},
 ]
 
 
@@ -51,6 +61,13 @@ const appRoutes:Routes = [
     UsersListComponent,
     UserUpdateComponent,
     UserPassUpdateComponent,
+    RankComponent,
+    FinderTicketComponent,
+    AddPointsTicketComponent,
+    RanksComponent,
+    PlayerPreviewComponent,
+    DeadComponent,
+    RateComponent,
   ],
   imports: [
     BrowserModule,

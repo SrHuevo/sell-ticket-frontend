@@ -1,0 +1,22 @@
+<h1>Apuntar Muerte Jugador</h1>
+
+<form [formGroup]="form" (ngSubmit)="submitForm(form.value)">
+
+  <div class="form-group" [ngClass]="{'has-error':!form.controls['dorsal'].valid && form.controls['dorsal'].touched}">
+    <div class="input-group">
+      <span class="input-group-addon">Dorsal</span>
+      <input type="number" class="form-control" aria-describedby="basic-addon3" [formControl]="form.controls['dorsal']">
+    </div>
+    <div *ngIf="!form.controls['dorsal'].valid && form.controls['dorsal'].touched" class="help-block with-errors">¡Debe introducir un dorsal!</div>
+  </div>
+
+  <div class="form-group" [ngClass]="{'has-error':!form.controls['kills'].valid && form.controls['kills'].touched}">
+    <div class="input-group">
+      <span class="input-group-addon">Muertes</span>
+      <input type="number" class="form-control" aria-describedby="basic-addon3" [formControl]="form.controls['kills']">
+    </div>
+    <div *ngIf="!form.controls['kills'].valid && form.controls['kills'].touched" class="help-block with-errors">¡Debe introducir las muertes!</div>
+  </div>
+
+  <button type="submit" class="btn btn-primary" [disabled]="!form.valid">Apuntar</button>
+</form>

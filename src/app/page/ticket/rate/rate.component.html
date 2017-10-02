@@ -1,0 +1,83 @@
+<h1>Puntuar Jugador</h1>
+
+<form [formGroup]="form" (ngSubmit)="submitForm(form.value)">
+
+  <div class="form-group" [ngClass]="{'has-error':!form.controls['dorsal'].valid && form.controls['dorsal'].touched}">
+    <div class="input-group">
+      <span class="input-group-addon">Dorsal</span>
+      <input type="number" class="form-control" aria-describedby="basic-addon3" [formControl]="form.controls['dorsal']">
+    </div>
+    <div *ngIf="!form.controls['dorsal'].valid && form.controls['dorsal'].touched" class="help-block with-errors">¡Debe introducir un dorsal!</div>
+  </div>
+
+  <table class="table">
+    <tbody>
+    <tr>
+      <td></td>
+      <td>1</td>
+      <td>2</td>
+      <td>3</td>
+      <td>4</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <td>Superviviente</td>
+      <td><input type="radio" [formControl]="form.controls['pointsSurvival']" name="pointsSurvival" [value]="1"></td>
+      <td><input type="radio" [formControl]="form.controls['pointsSurvival']" name="pointsSurvival" [value]="2"></td>
+      <td><input type="radio" [formControl]="form.controls['pointsSurvival']" name="pointsSurvival" [value]="3"></td>
+      <td><input type="radio" [formControl]="form.controls['pointsSurvival']" name="pointsSurvival" [value]="4"></td>
+      <td><input type="radio" [formControl]="form.controls['pointsSurvival']" name="pointsSurvival" [value]="5"></td>
+    </tr>
+    <tr>
+      <td>Debora craneos</td>
+      <td><input type="radio" [formControl]="form.controls['pointsZombie']" name="pointsZombie" [value]="1"></td>
+      <td><input type="radio" [formControl]="form.controls['pointsZombie']" name="pointsZombie" [value]="2"></td>
+      <td><input type="radio" [formControl]="form.controls['pointsZombie']" name="pointsZombie" [value]="3"></td>
+      <td><input type="radio" [formControl]="form.controls['pointsZombie']" name="pointsZombie" [value]="4"></td>
+      <td><input type="radio" [formControl]="form.controls['pointsZombie']" name="pointsZombie" [value]="5"></td>
+    </tr>
+    <tr>
+      <td>Cobarde</td>
+      <td><input type="radio" [formControl]="form.controls['pointsScary']" name="pointsScary" [value]="1"></td>
+      <td><input type="radio" [formControl]="form.controls['pointsScary']" name="pointsScary" [value]="2"></td>
+      <td><input type="radio" [formControl]="form.controls['pointsScary']" name="pointsScary" [value]="3"></td>
+      <td><input type="radio" [formControl]="form.controls['pointsScary']" name="pointsScary" [value]="4"></td>
+      <td><input type="radio" [formControl]="form.controls['pointsScary']" name="pointsScary" [value]="5"></td>
+    </tr>
+    <tr>
+      <td>Precoz</td>
+      <td><input type="radio" [formControl]="form.controls['pointsPremature']" name="pointsPremature" [value]="1"></td>
+      <td><input type="radio" [formControl]="form.controls['pointsPremature']" name="pointsPremature" [value]="2"></td>
+      <td><input type="radio" [formControl]="form.controls['pointsPremature']" name="pointsPremature" [value]="3"></td>
+      <td><input type="radio" [formControl]="form.controls['pointsPremature']" name="pointsPremature" [value]="4"></td>
+      <td><input type="radio" [formControl]="form.controls['pointsPremature']" name="pointsPremature" [value]="5"></td>
+    </tr>
+    <tr>
+      <td>Maquiavelico</td>
+      <td><input type="radio" [formControl]="form.controls['pointsMachiavellian']" name="pointsMachiavellian" [value]="1"></td>
+      <td><input type="radio" [formControl]="form.controls['pointsMachiavellian']" name="pointsMachiavellian" [value]="2"></td>
+      <td><input type="radio" [formControl]="form.controls['pointsMachiavellian']" name="pointsMachiavellian" [value]="3"></td>
+      <td><input type="radio" [formControl]="form.controls['pointsMachiavellian']" name="pointsMachiavellian" [value]="4"></td>
+      <td><input type="radio" [formControl]="form.controls['pointsMachiavellian']" name="pointsMachiavellian" [value]="5"></td>
+    </tr>
+    <tr>
+      <td>Patoso</td>
+      <td><input type="radio" [formControl]="form.controls['pointsClumsy']" name="pointsClumsy" [value]="1"></td>
+      <td><input type="radio" [formControl]="form.controls['pointsClumsy']" name="pointsClumsy" [value]="2"></td>
+      <td><input type="radio" [formControl]="form.controls['pointsClumsy']" name="pointsClumsy" [value]="3"></td>
+      <td><input type="radio" [formControl]="form.controls['pointsClumsy']" name="pointsClumsy" [value]="4"></td>
+      <td><input type="radio" [formControl]="form.controls['pointsClumsy']" name="pointsClumsy" [value]="5"></td>
+    </tr>
+    <tr>
+      <td>Muerte de telenovela</td>
+      <td><input type="radio" [formControl]="form.controls['pointsSoapOperaDeath']" name="pointsSoapOperaDeath" [value]="1"></td>
+      <td><input type="radio" [formControl]="form.controls['pointsSoapOperaDeath']" name="pointsSoapOperaDeath" [value]="2"></td>
+      <td><input type="radio" [formControl]="form.controls['pointsSoapOperaDeath']" name="pointsSoapOperaDeath" [value]="3"></td>
+      <td><input type="radio" [formControl]="form.controls['pointsSoapOperaDeath']" name="pointsSoapOperaDeath" [value]="4"></td>
+      <td><input type="radio" [formControl]="form.controls['pointsSoapOperaDeath']" name="pointsSoapOperaDeath" [value]="5"></td>
+    </tr>
+    </tbody>
+  </table>
+
+  <button type="submit" class="btn btn-primary" [disabled]="!form.valid">Puntuar</button>
+</form>
