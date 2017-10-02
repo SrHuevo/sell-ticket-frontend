@@ -19,9 +19,10 @@ export class TicketListComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.tickets = []
     const canReserve = this.userService.me.profiles.indexOf('CAN_RESERVE') != -1
     this.ticketService.getList().subscribe(response => {
-      this.tickets = response.json().filter(ticket => canReserve || !ticket.reserved)
+      this.tickets = response.json().filter(ticket => canReserve || !ticket.reserved).sort((a,b)=>a._id - b._id)
     })
   }
 
