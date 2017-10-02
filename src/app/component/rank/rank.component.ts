@@ -8,7 +8,7 @@ import {Component, Input, OnInit} from '@angular/core'
 export class RankComponent implements OnInit {
 
   @Input() title: string
-  @Input() rank: Array<{}>
+  @Input() rank
 
   constructor() { }
 
