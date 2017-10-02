@@ -20,7 +20,6 @@ import { UsersListComponent } from './page/user/users-list/users-list.component'
 import { UserUpdateComponent } from './page/user/user-update/user-update.component';
 import { UserPassUpdateComponent } from './page/user/user-pass-update/user-pass-update.component';
 import { RankComponent } from './component/rank/rank.component';
-import { FinderTicketComponent } from './component/finder-ticket/finder-ticket.component';
 import { AddPointsTicketComponent } from './component/add-points-ticket/add-points-ticket.component';
 import { RanksComponent } from './page/ticket/ranks/ranks.component';
 import { PlayerPreviewComponent } from './component/player-preview/player-preview.component';
@@ -62,7 +61,6 @@ const appRoutes:Routes = [
     UserUpdateComponent,
     UserPassUpdateComponent,
     RankComponent,
-    FinderTicketComponent,
     AddPointsTicketComponent,
     RanksComponent,
     PlayerPreviewComponent,

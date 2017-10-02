@@ -10,13 +10,14 @@ import 'rxjs/add/operator/switchMap'
 })
 export class RanksComponent implements OnInit {
 
-  ranks = {}
+  ranks
 
   constructor(
     public ticketService: TicketService
   ) { }
 
   ngOnInit() {
+    this.ranks = {}
     const observableInterval = IntervalObservable.create(10000)
     const observableGetRanks = this.ticketService.getRanks()
     observableInterval.switchMap(() => observableGetRanks)
@@ -24,5 +25,9 @@ export class RanksComponent implements OnInit {
       this.ranks = response.json()
     })
   }
+
+}
+
+interface ranks {
 
 }
