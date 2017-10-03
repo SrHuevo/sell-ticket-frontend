@@ -2,19 +2,35 @@ import { Injectable } from '@angular/core';
 import {Headers, Http, RequestOptions, Response} from '@angular/http'
 import {AuthService} from './auth.service'
 import {User} from '../pojo/user'
-import {ActivatedRoute} from '@angular/router'
+import {ActivatedRoute, Router} from '@angular/router'
 import {environment} from '../../environments/environment'
 
 @Injectable()
 export class UserService {
 
-  me
+  _me
 
   constructor(
     private http: Http,
     private authService: AuthService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router,
   ) { }
+
+  set me(_me) {
+    this._me = _me
+  }
+
+  get me() {
+    if(this._me) return this._me
+    this.getMe().subscribe(
+      ()=>{},
+      err => this.authService.logout().subscribe(() => {
+        this.router.navigate(['/login'])
+      })
+    )
+
+  }
 
   getMe() {
     const headers = new Headers({
