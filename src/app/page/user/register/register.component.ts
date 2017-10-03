@@ -26,12 +26,14 @@ export class RegisterComponent implements OnInit {
 
   submitForm(values){
     values.profiles = [
-      'USER_CREATOR',
-      'USER_VIWER',
-      'USER_EDITOR',
-      'TICKET_VIEWER',
-      'TICKET_EDITOR',
-      'CHECKING'
+      "USER_CREATOR",
+      "USER_EDITOR",
+      "USER_VIEWER",
+      "TICKET_CHECKING",
+      "TICKET_VIEWER",
+      "TICKET_EDITOR",
+      "TICKET_SELLER",
+      "TICKET_RATING"
     ]
     this.userService.register(values).subscribe(
       data => {
