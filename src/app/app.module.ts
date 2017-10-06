@@ -25,6 +25,7 @@ import { RanksComponent } from './page/ticket/ranks/ranks.component';
 import { PlayerPreviewComponent } from './component/player-preview/player-preview.component';
 import { DeadComponent } from './page/ticket/dead/dead.component';
 import { RateComponent } from './page/ticket/rate/rate.component';
+import { TestComponent } from './page/ticket/test/test.component';
 
 const appRoutes:Routes = [
   {path: 'login', component: LoginComponent},
@@ -42,6 +43,7 @@ const appRoutes:Routes = [
     {path: 'rate', component: RateComponent},
     {path: 'dead', component: DeadComponent},
     {path: 'ranks', component: RanksComponent},
+    {path: 'test', component: TestComponent},
     {path: ':ticketId', component: TicketUpdateComponent},
   ]},
   {path: '**', redirectTo: '/ticket/sell'},
@@ -66,6 +68,7 @@ const appRoutes:Routes = [
     PlayerPreviewComponent,
     DeadComponent,
     RateComponent,
+    TestComponent,
   ],
   imports: [
     BrowserModule,

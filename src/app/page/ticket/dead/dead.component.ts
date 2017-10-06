@@ -10,6 +10,7 @@ import {TicketService} from '../../../service/ticket.service'
 export class DeadComponent implements OnInit {
 
   form : FormGroup
+  player
 
   constructor(
     fb: FormBuilder,
@@ -22,6 +23,18 @@ export class DeadComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  clearWeaponInfo() {
+    this.player = undefined
+  }
+
+  findDorsal(dorsal) {
+    this.ticketService.get(dorsal)
+    .map(response => response.json())
+    .subscribe(response => {
+      this.player = response
+    })
   }
 
   submitForm(data) {

@@ -1,0 +1,14 @@
+<h1>Apuntar participantes que han pasado la prueba</h1>
+
+<div class="form-group">
+  <label class="control-label">Dorsal:</label>
+  <input class="form-control" type="number" placeholder="Introduce los dorsales separados por lo que te salga de los huevos" (keypress)="dorsalWritter($event)">
+</div>
+<div *ngFor="let player of players" class="form-group">
+  <h1>
+    <span (click)="deletePlayer(player)" class="label label-default">{{player.dorsal | number :'3.0-0'}}</span>
+    <button class="btn" [ngClass]="player.weapon ? 'btn-success' : 'btn-default'" (click)="giveWeapon(player)">{{player.weapon ? 'Armado' : 'Sin Arma'}}</button>
+  </h1>
+</div>
+
+<button type="submit" class="btn btn-primary" [disabled]="!players.length" (click)="saveTests()">Guardar</button>

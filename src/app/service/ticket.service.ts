@@ -81,4 +81,13 @@ export class TicketService {
     return this.http.patch(`${environment.urlServer}/ticket/${dorsal}/dead`, goal, options)
   }
 
+  tests(players) {
+    const headers = new Headers({
+      'Content-Type': 'application/json',
+      authorization: `Bearer ${this.authService.jwt}`
+    })
+    const options = new RequestOptions({ headers: headers })
+    return this.http.patch(`${environment.urlServer}/ticket/test`, players, options)
+  }
+
 }
