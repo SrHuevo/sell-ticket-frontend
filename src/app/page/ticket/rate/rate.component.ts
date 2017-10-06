@@ -20,7 +20,6 @@ export class RateComponent implements OnInit {
       pointsSurvival: 0,
       pointsZombie: 0,
       pointsScary: 0,
-      pointsPremature: 0,
       pointsMachiavellian: 0,
       pointsClumsy: 0,
       pointsSoapOperaDeath: 0,
