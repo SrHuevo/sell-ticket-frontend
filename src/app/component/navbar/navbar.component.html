@@ -15,15 +15,27 @@
     <div class="navbar-collapse" [ngClass]="{collapse: !isCollapsed}">
       <ul class="nav navbar-nav">
         <li *ngIf="authService.logged">
+          <a class="nav-link" [routerLink]="['/ticket/ranks']">Ranking</a>
+        </li>
+        <li *ngIf="authService.logged && userService.haveProfile('TICKET_DEAD')">
+          <a class="nav-link" [routerLink]="['/ticket/dead']">Muerte</a>
+        </li>
+        <li *ngIf="authService.logged && userService.haveProfile('TICKET_TEST_PASSED')">
+          <a class="nav-link" [routerLink]="['/ticket/test']">Prueba</a>
+        </li>
+        <li *ngIf="authService.logged && userService.haveProfile('TICKET_RATING')">
+          <a class="nav-link" [routerLink]="['/ticket/rate']">Puntuar</a>
+        </li>
+        <li *ngIf="authService.logged && (!userService.haveProfile('TICKET_DEAD') || userService.haveProfile('ADMIN'))">
           <a class="nav-link" [routerLink]="['/ticket/sell']">Vender</a>
         </li>
-        <li *ngIf="authService.logged">
+        <li *ngIf="authService.logged && (!userService.haveProfile('TICKET_DEAD') || userService.haveProfile('ADMIN'))">
           <a class="nav-link" [routerLink]="['/ticket/list']">Lista de entradas</a>
         </li>
-        <li *ngIf="authService.logged">
+        <li *ngIf="authService.logged && (!userService.haveProfile('TICKET_DEAD') || userService.haveProfile('ADMIN'))">
           <a class="nav-link" [routerLink]="['/user/register']">Registrar nuevo vendedor</a>
         </li>
-        <li *ngIf="authService.logged">
+        <li *ngIf="authService.logged && (!userService.haveProfile('TICKET_DEAD') || userService.haveProfile('ADMIN'))">
           <a class="nav-link" [routerLink]="['/user/list']">Lista de vendedores</a>
         </li>
       </ul>

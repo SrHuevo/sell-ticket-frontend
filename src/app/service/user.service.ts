@@ -32,6 +32,14 @@ export class UserService {
 
   }
 
+  haveProfile(profile) {
+    if(!this.me || !this.me.profiles) {
+      return false
+    }
+
+    return this.me.profiles.indexOf(profile) !== -1
+  }
+
   getMe() {
     const headers = new Headers({
       'Content-Type': 'application/json',

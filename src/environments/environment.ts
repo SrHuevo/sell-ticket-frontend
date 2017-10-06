@@ -5,5 +5,5 @@
 
 export const environment = {
   production: false,
-  urlServer: 'https://sell-ticket.herokuapp.com'
+  urlServer: 'http://localhost:3000'
 };

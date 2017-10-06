@@ -35,7 +35,6 @@ export class RateComponent implements OnInit {
       pointsSurvival: Number(data.pointsSurvival),
       pointsZombie: Number(data.pointsZombie),
       pointsScary: Number(data.pointsScary),
-      pointsPremature: Number(data.pointsPremature),
       pointsMachiavellian: Number(data.pointsMachiavellian),
       pointsClumsy: Number(data.pointsClumsy),
       pointsSoapOperaDeath: Number(data.pointsSoapOperaDeath),
