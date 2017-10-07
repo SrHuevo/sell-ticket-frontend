@@ -5,7 +5,7 @@
   <div class="form-group" [ngClass]="{'has-error':!form.controls['dorsal'].valid && form.controls['dorsal'].touched}">
     <div class="input-group">
       <span class="input-group-addon">Dorsal</span>
-      <input type="number" class="form-control" aria-describedby="basic-addon3" [formControl]="form.controls['dorsal']" #dorsalInput (change)="findDorsal(dorsalInput.value)" (keydown)="clearWeaponInfo()">
+      <input type="text" class="form-control" aria-describedby="basic-addon3" [formControl]="form.controls['dorsal']" #dorsalInput (change)="findDorsal(dorsalInput.value)" (keydown)="clearWeaponInfo()">
     </div>
     <div *ngIf="!form.controls['dorsal'].valid && form.controls['dorsal'].touched" class="help-block with-errors">¡Debe introducir un dorsal!</div>
   </div>
