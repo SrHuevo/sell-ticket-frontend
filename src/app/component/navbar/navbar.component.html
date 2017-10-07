@@ -29,7 +29,7 @@
         <li *ngIf="authService.logged && (!userService.haveProfile('TICKET_DEAD') || userService.haveProfile('ADMIN'))">
           <a class="nav-link" [routerLink]="['/ticket/sell']">Vender</a>
         </li>
-        <li *ngIf="authService.logged && (!userService.haveProfile('TICKET_DEAD') || userService.haveProfile('ADMIN'))">
+        <li *ngIf="authService.logged && (!userService.haveProfile('TICKET_DEAD') || userService.haveProfile('ADMIN') || userService.haveProfile('CHECKING'))">
           <a class="nav-link" [routerLink]="['/ticket/list']">Lista de entradas</a>
         </li>
         <li *ngIf="authService.logged && (!userService.haveProfile('TICKET_DEAD') || userService.haveProfile('ADMIN'))">

@@ -10,6 +10,7 @@
     <div *ngIf="!form.controls['dorsal'].valid && form.controls['dorsal'].touched" class="help-block with-errors">¡Debe introducir un dorsal!</div>
   </div>
   <h1><span class="label" *ngIf="player" [ngClass]="player?.weapon ? 'label-success' : 'label-default'">{{player?.weapon ? 'El jugador tiene arma' : 'El jugador no tiene arma'}}</span></h1>
+  <h1><span class="label" *ngIf="player && player.immortal">¡Inmortal!</span></h1>
 
   <div class="form-group" [ngClass]="{'has-error':!form.controls['kills'].valid && form.controls['kills'].touched}">
     <div class="input-group">

@@ -8,7 +8,18 @@
   <h1>
     <span (click)="deletePlayer(player)" class="label label-default">{{player.dorsal | number :'3.0-0'}}</span>
     <button class="btn" [ngClass]="player.weapon ? 'btn-success' : 'btn-default'" (click)="giveWeapon(player)">{{player.weapon ? 'Armado' : 'Sin Arma'}}</button>
+    <span *ngIf="player.tests && player.tests.indexOf(testSelected) !== -1" class="label label-info">{{'Ya ha superado esta prueba'}}</span>
   </h1>
 </div>
-
+<div *ngIf="tests.length > 1" class="form-group">
+  <label>¿Qué prueba han superado?:</label>
+</div>
+<div  *ngIf="tests.length > 1">
+  <div class="radio" *ngFor="let test of tests">
+    <label>
+      <input type="radio" name="test" value="true" (click)="selectTest(test)">
+      test
+    </label>
+  </div>
+</div>
 <button type="submit" class="btn btn-primary" [disabled]="!players.length" (click)="saveTests()">Guardar</button>
