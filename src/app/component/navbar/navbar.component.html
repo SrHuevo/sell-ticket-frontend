@@ -17,13 +17,13 @@
         <li *ngIf="authService.logged">
           <a class="nav-link" [routerLink]="['/ticket/ranks']">Ranking</a>
         </li>
-        <li *ngIf="authService.logged && userService.haveProfile('TICKET_DEAD')">
+        <li *ngIf="authService.logged && userService.haveProfile('DEAD')">
           <a class="nav-link" [routerLink]="['/ticket/dead']">Muerte</a>
         </li>
-        <li *ngIf="authService.logged && userService.haveProfile('TICKET_TEST_PASSED')">
+        <li *ngIf="authService.logged && userService.haveProfile('TEST')">
           <a class="nav-link" [routerLink]="['/ticket/test']">Prueba</a>
         </li>
-        <li *ngIf="authService.logged && userService.haveProfile('TICKET_RATING')">
+        <li *ngIf="authService.logged && userService.haveProfile('RATE')">
           <a class="nav-link" [routerLink]="['/ticket/rate']">Puntuar</a>
         </li>
         <li *ngIf="authService.logged && (!userService.haveProfile('TICKET_DEAD') || userService.haveProfile('ADMIN'))">
